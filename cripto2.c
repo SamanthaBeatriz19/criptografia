@@ -8,7 +8,7 @@
 int existe(char palavra[], char frase[]){
 	int tamP = strlen(palavra);
 	int tamF = strlen(frase);
-	int quant=0,x=0,i2=0,i,j;
+	int x=0,i,j;
 	for(i=0;i<tamF;i++){
 		if (palavra[0]==frase[i]){
 			j=i;
@@ -30,9 +30,9 @@ int existe(char palavra[], char frase[]){
 //MAIN COMECA AKI 
 int main(){
 	typedef struct {
-	char agente[100];
+	char agente[101];
 	char id[5];
-	char frase[100],cript[100];
+	char frase[100],cript[101];
 	char depar[40];	
 	}Frase;
 	Frase salva[10];
@@ -62,7 +62,7 @@ int main(){
 				fgets(salva[cont].frase, 100, stdin);
 				printf("Digite o numero de identificacao do agente:\n");
 				fgets(salva[cont].id, 5, stdin);
-				char ajuda[100],fim[100];
+				char ajuda[101],fim[101];
 				strcpy(ajuda, salva[cont].frase);
 				i = 0;
 				while(ajuda[i] != '\0'){
@@ -91,7 +91,7 @@ int main(){
 			case 2:{ 
 				//Ver se a palavra ja esta no sistema
 				char palavra[40];
-				char frase2[100];
+				char frase2[101];
 				int qtd=0;
 				printf("****ENCONTRAR PADROES****\n");
 				printf("Digite o padrao a ser encontrado:\n");
@@ -117,17 +117,33 @@ int main(){
 					qtd=0;		
 				break;
 			}
-			case 3:{
+			case 3:{//ainda tentando
 				printf("****DESCRIPTOGRAFAR MENSAGEM****\n");
 				printf("Digite a mensagem criptografada:\n");
-				char busca[100];
-				
+				char busca[101];
+				fgets(busca, 100, stdin);
+				fgets(busca, 100, stdin);
+				int a=0;
+				for(int u=0;u<cont;u++){
+					a=existe(busca,salva[u].cript);
+					if(a == 1){
+						printf("%s",salva[u].agente);
+						printf("%s",salva[u].depar);
+						printf("%s",salva[u].frase);
+						printf("%s\n",salva[u].id);
+					}
+						
+				}
+				if(a == 0)
+					printf("****Mensagem nao encontrada!****\n");
+				break;
 			}
-			case 4:{
+			case 4:{//OK-funcionando
 					fflush(stdin);
 					int todos = cont;
 					int vazio = strlen(salva[0].id);					
 					if (vazio != 0){
+						printf("****VISUALIZAR TODAS AS MENSAGENS****\n");
 						for(int k=0;k<todos;k++){
 							printf("%s",salva[k].agente);
 							printf("%s",salva[k].depar);
@@ -142,7 +158,7 @@ int main(){
 			
    			default:{
 				fflush(stdin);
-				if(escolha != 0)		
+				if(escolha > 4)		
 					printf("****Opcao Invalida, tentar novamente****\n");
 				
 			}
