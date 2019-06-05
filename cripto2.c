@@ -46,6 +46,7 @@ int main(){
 		printf("4: Visualizar todas as mensagens\n");
 		printf("0: Sair!\n");
 		scanf("%d",&escolha);
+		fflush(stdin);
 		switch (escolha){
 			case 1:{//OK - RODANDO
 				printf("****ADICIONAR MENSAGEM****\n");
@@ -117,19 +118,33 @@ int main(){
 				break;
 			}
 			case 3:{
+				printf("****DESCRIPTOGRAFAR MENSAGEM****\n");
+				printf("Digite a mensagem criptografada:\n");
+				char busca[100];
+				
 			}
 			case 4:{
+					fflush(stdin);
 					int todos = cont;
-					for(int k=0;k<todos;k++){
-						printf("%s",salva[k].agente);
-						printf("%s",salva[k].depar);
-						printf("%s\n",salva[k].cript);
-						printf("%s\n",salva[k].id);
+					int vazio = strlen(salva[0].id);					
+					if (vazio != 0){
+						for(int k=0;k<todos;k++){
+							printf("%s",salva[k].agente);
+							printf("%s",salva[k].depar);
+							printf("%s\n",salva[k].cript);
+							printf("%s\n",salva[k].id);
+						}
+					}else{
+						printf("****Sistema Vazio!****\n");
 					}
+					
 			}
 			
-   			default{
-				printf("****Opcao Invalida, tentar novamente****\n");
+   			default:{
+				fflush(stdin);
+				if(escolha != 0)		
+					printf("****Opcao Invalida, tentar novamente****\n");
+				
 			}
 		}
 		
