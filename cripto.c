@@ -30,7 +30,7 @@ int existe(char palavra[], char frase[]){
 //MAIN COMECA AKI 
 int main(){
 	typedef struct {
-	char agente[101];
+	char agente[102];
 	char id[5];
 	char frase[101],cript[101];
 	char depar[40];	
@@ -51,10 +51,12 @@ int main(){
 			case 1:{//OK - RODANDO
 				printf("****ADICIONAR MENSAGEM****\n");
 				//esse primeiro fgets é uma gambiarra pq ele ignora o primeiro n sei pq
-				fgets(salva[cont].agente, 100, stdin);
+				fgets(salva[cont].agente, 102, stdin);
 				fflush(stdin);
 				printf("Digite o nome do Agente:\n");
-				fgets(salva[cont].agente, 40, stdin);
+				fgets(salva[cont].agente, 102, stdin);
+				fflush(stdin);
+				
 				printf("Digite o departamento:\n");
 				fgets(salva[cont].depar, 40, stdin);
 				fflush(stdin);
