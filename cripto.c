@@ -32,7 +32,7 @@ int main(){
 	typedef struct {
 	char agente[101];
 	char id[5];
-	char frase[100],cript[101];
+	char frase[101],cript[101];
 	char depar[40];	
 	}Frase;
 	Frase salva[10];
