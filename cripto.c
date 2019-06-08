@@ -30,7 +30,7 @@ int existe(char palavra[], char frase[]){
 //MAIN COMECA AKI 
 int main(){
 	typedef struct {
-	char agente[101];
+	char agente[110];
 	char id[5];
 	char frase[101],cript[101];
 	char depar[40];	
@@ -54,7 +54,8 @@ int main(){
 				fgets(salva[cont].agente, 100, stdin);
 				fflush(stdin);
 				printf("Digite o nome do Agente:\n");
-				fgets(salva[cont].agente, 40, stdin);
+				fgets(salva[cont].agente, 102, stdin);
+				fflush(stdin);
 				printf("Digite o departamento:\n");
 				fgets(salva[cont].depar, 40, stdin);
 				fflush(stdin);
@@ -111,7 +112,7 @@ int main(){
 						
 					}
 					else{
-						printf("nao existe\n");
+						printf("****Padrao nao encontrado!****\n");
 									      					
 					}
 					qtd=0;		
@@ -141,7 +142,7 @@ int main(){
 			case 4:{//OK-funcionando
 					fflush(stdin);
 					int todos = cont;
-					int vazio = strlen(salva[0].id);					
+					int vazio = strlen(salva[0].agente);					
 					if (vazio != 0){
 						printf("****VISUALIZAR TODAS AS MENSAGENS****\n");
 						for(int k=0;k<todos;k++){
