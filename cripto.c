@@ -32,10 +32,10 @@ int main(){
 	typedef struct {
 	char agente[102];
 	char id[5];
-	char frase[101],cript[101];
+	char frase[102],cript[102];
 	char depar[45];	
 	}Frase;
-	Frase salva[10];
+	Frase salva[1000];
 	int escolha=5,cont=0;
 	int i;
 	while(escolha != 0){
@@ -64,7 +64,7 @@ int main(){
 				fgets(salva[cont].frase, 100, stdin);
 				printf("Digite o numero de identificacao do agente:\n");
 				fgets(salva[cont].id, 5, stdin);
-				char ajuda[101],fim[101];
+				char ajuda[102],fim[102];
 				strcpy(ajuda, salva[cont].frase);
 				
 				i = 0;
@@ -94,14 +94,14 @@ int main(){
 			}
 			case 2:{ 
 				//Ver se a palavra ja esta no sistema
-				char palavra[40];
-				char frase2[101];
+				char palavra[42];
+				char frase2[102];
 				int qtd=0;
 				printf("****ENCONTRAR PADROES****\n");
 				printf("Digite o padrao a ser encontrado:\n");
 				
-				fgets(palavra, 40, stdin);
-				fgets(palavra, 40, stdin);
+				fgets(palavra, 42, stdin);
+				fgets(palavra, 42, stdin);
 								
 				for(int k=0;k< cont;k++){
 					
@@ -124,22 +124,27 @@ int main(){
 			case 3:{//ainda tentando
 				printf("****DESCRIPTOGRAFAR MENSAGEM****\n");
 				printf("Digite a mensagem criptografada:\n");
-				char busca[101];
-				fgets(busca, 100, stdin);
-				fgets(busca, 100, stdin);
-				int a=0;
+				char busca[102];
+				fgets(busca, 102, stdin);
+				fgets(busca, 102, stdin);
+				int a=0,aux=0,b=0;
+				aux=strlen(busca);
+				busca[aux-1] = '\0';
 				for(int u=0;u<cont;u++){
-					a=existe(busca,salva[u].cript);
-					if(a == 1){
+					a=strcmp(busca,salva[u].cript);
+					if(a == 0){
 						printf("%s",salva[u].agente);
 						printf("%s",salva[u].depar);
 						printf("%s",salva[u].frase);
 						printf("%s\n",salva[u].id);
+						b++;
 					}
 						
 				}
-				if(a == 0)
+				
+				if(b == 0)
 					printf("****Mensagem nao encontrada!****\n");
+				
 				break;
 			}
 			case 4:{//OK-funcionando
