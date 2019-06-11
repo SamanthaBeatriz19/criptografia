@@ -1,7 +1,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
-#include<stdbool.h>
+#include<ctype.h>
 
 
 
@@ -33,7 +33,7 @@ int main(){
 	char agente[102];
 	char id[5];
 	char frase[101],cript[101];
-	char depar[40];	
+	char depar[45];	
 	}Frase;
 	Frase salva[10];
 	int escolha=5,cont=0;
@@ -58,7 +58,7 @@ int main(){
 				fflush(stdin);
 				
 				printf("Digite o departamento:\n");
-				fgets(salva[cont].depar, 40, stdin);
+				fgets(salva[cont].depar, 45, stdin);
 				fflush(stdin);
 				printf("Digite a mensagem a ser criptografada:\n");
 				fgets(salva[cont].frase, 100, stdin);
@@ -66,8 +66,10 @@ int main(){
 				fgets(salva[cont].id, 5, stdin);
 				char ajuda[101],fim[101];
 				strcpy(ajuda, salva[cont].frase);
+				
 				i = 0;
 				while(ajuda[i] != '\0'){
+					ajuda[i]=toupper(ajuda[i]);
 					if(ajuda[i] == 32){
 						fim[i] = ajuda[i];					
 					}else{					
@@ -109,11 +111,11 @@ int main(){
 						}
 				}
 					if(qtd>0){
-						printf("A palavra existe em %d vezes\n",qtd);
+						printf("****Padrao encontrado em %d mensagens!****\n",qtd);
 						
 					}
 					else{
-						printf("nao existe\n");
+						printf("***Padrao nao encontrado!****\n");
 									      					
 					}
 					qtd=0;		
